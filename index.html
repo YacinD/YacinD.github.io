@@ -704,21 +704,21 @@
         Open to opportunities
       </div>
       <p class="hero-subtitle">
-        Building scalable, secure infrastructure and automating deployment pipelines to streamline software delivery. Focused on reliability, performance, and operational excellence.
+        Building <strong>scalable infrastructure</strong>, automating deployment pipelines, and bridging the gap between development and operations. Focused on reliability, security, and delivery.
       </p>
       <div class="hero-ctas">
         <a href="#projects" class="btn-primary">View Projects →</a>
-        <a href="https://github.com/YacinD" target="_blank" class="btn-ghost">GitHub</a>
+        <a href="https://github.com/" target="_blank" class="btn-ghost">GitHub</a>
         <a href="#contact" class="btn-ghost">Get in touch</a>
       </div>
       <div class="stats-row">
         <div class="stat-item">
-          <div class="number">?</div>
+          <div class="number">10+</div>
           <div class="label">Projects</div>
         </div>
         <div class="stat-item">
-          <div class="number">7 Months</div>
-          <div class="label">Experience</div>
+          <div class="number">3</div>
+          <div class="label">Cloud Platforms</div>
         </div>
         <div class="stat-item">
           <div class="number">UK</div>
@@ -747,18 +747,18 @@
     <h2>Who I Am</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>My focus spans <strong>CI/CD pipeline design</strong>, container orchestration, infrastructure as code, and cloud-native architecture — primarily using Amazon Web Services (AWS) to deliver production-grade, scalable systems.</p>
-        <p>I work extensively with tools such as <strong>Docker, Kubernetes, and Terraform</strong> to automate infrastructure, manage containers, and provision consistent environments across the software lifecycle.</p>
-        <p>I follow an <strong>automation-first approach</strong>: if something is done more than twice, it should be turned into a pipeline. Everything is documented with production discipline and treated as if it could be reviewed in a post-mortem.</p>
+        <p>I'm a <strong>DevOps Engineer</strong> passionate about building the infrastructure and tooling that lets teams ship software faster and more reliably.</p>
+        <p>My focus spans <strong>CI/CD pipeline design</strong>, container orchestration, infrastructure as code, and cloud-native architecture — working across AWS, Azure, and GCP to deliver production-grade systems.</p>
+        <p>I believe in <strong>automation-first</strong> thinking: if it's done more than twice, it should be a pipeline. Everything documented like it might end up in a post-mortem.</p>
       </div>
       <div class="about-stats">
         <div class="stat-card">
-          <div class="number">?</div>
+          <div class="number">10+</div>
           <div class="label">Projects</div>
         </div>
         <div class="stat-card">
-          <div class="number">7 Months</div>
-          <div class="label">Experience</div>
+          <div class="number">3</div>
+          <div class="label">Cloud Platforms</div>
         </div>
         <div class="stat-card">
           <div class="number">CI/CD</div>
@@ -790,28 +790,90 @@
     </div>
 
     <div class="projects-grid">
-      <div class="project-card" style="grid-column: 1 / -1; max-width: 700px;">
+      <div class="project-card">
         <div class="project-card-header">
-          <div class="project-icon">🚀</div>
-          <a href="https://github.com/YacinD" target="_blank" class="project-link">GitHub →</a>
+          <div class="project-icon">⚙</div>
+          <a href="#" class="project-link">GitHub →</a>
         </div>
-        <div class="project-title">ECS — Containerised Deployment on AWS</div>
-        <p class="project-desc">A production-grade containerised deployment pipeline built on Amazon ECS (Elastic Container Service) using Fargate. The project provisions all infrastructure via Terraform — including VPC, subnets, security groups, IAM roles, ECS cluster, task definitions, and an Application Load Balancer. Docker images are built and pushed to Amazon ECR through a fully automated GitHub Actions CI/CD pipeline triggered on every push to the main branch. The pipeline handles building, tagging, and deploying the updated container to ECS with zero-downtime rolling updates.</p>
-        <p class="project-desc">The setup follows a GitOps model where the codebase acts as the single source of truth. Environment-specific variables are managed through Terraform workspaces and AWS Secrets Manager, ensuring clean separation between dev and prod. The deployment is observable through CloudWatch logs and container-level health checks configured on the ECS service.</p>
+        <div class="project-title">CI/CD Pipeline — Multi-Stage</div>
+        <p class="project-desc">End-to-end deployment pipeline with automated testing, container builds, and blue-green deployments. Includes rollback and Slack notifications.</p>
         <div class="project-tags">
-          <span class="tag">AWS ECS</span>
-          <span class="tag">Fargate</span>
-          <span class="tag">Terraform</span>
-          <span class="tag">Docker</span>
           <span class="tag">GitHub Actions</span>
-          <span class="tag">ECR</span>
-          <span class="tag">ALB</span>
-          <span class="tag">CloudWatch</span>
-          <span class="tag">IAM</span>
-          <span class="tag">VPC</span>
+          <span class="tag">Docker</span>
+          <span class="tag">AWS ECS</span>
         </div>
       </div>
-    </div></div>
+
+      <div class="project-card">
+        <div class="project-card-header">
+          <div class="project-icon">☸</div>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
+        <div class="project-title">Kubernetes Cluster Setup</div>
+        <p class="project-desc">Production-grade Kubernetes cluster with namespaced workloads, RBAC policies, Helm chart management, and auto-scaling configuration.</p>
+        <div class="project-tags">
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Helm</span>
+          <span class="tag">EKS</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-header">
+          <div class="project-icon">🏗</div>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
+        <div class="project-title">Infrastructure as Code — AWS</div>
+        <p class="project-desc">Fully modular Terraform codebase provisioning VPCs, ECS clusters, RDS, and load balancers across multiple environments with remote state.</p>
+        <div class="project-tags">
+          <span class="tag">Terraform</span>
+          <span class="tag">AWS</span>
+          <span class="tag">S3 Backend</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-header">
+          <div class="project-icon">📊</div>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
+        <div class="project-title">Observability Stack</div>
+        <p class="project-desc">Full monitoring setup with Prometheus metrics collection, Grafana dashboards, and Alertmanager routing — deployed via Helm on Kubernetes.</p>
+        <div class="project-tags">
+          <span class="tag">Prometheus</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">Alertmanager</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-header">
+          <div class="project-icon">🔐</div>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
+        <div class="project-title">Secrets Management</div>
+        <p class="project-desc">HashiCorp Vault deployment with dynamic secrets, KMS auto-unseal, and Kubernetes integration for secure credential injection into pods.</p>
+        <div class="project-tags">
+          <span class="tag">Vault</span>
+          <span class="tag">KMS</span>
+          <span class="tag">Kubernetes</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-header">
+          <div class="project-icon">🔄</div>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
+        <div class="project-title">GitOps with ArgoCD</div>
+        <p class="project-desc">Git-driven deployment pipeline where every commit to main automatically syncs to the cluster via ArgoCD with self-healing and automated rollback.</p>
+        <div class="project-tags">
+          <span class="tag">ArgoCD</span>
+          <span class="tag">GitOps</span>
+          <span class="tag">Helm</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -824,12 +886,20 @@
     <h2>Skills & Tools</h2>
     <div class="skills-grid">
       <div class="skill-cat">
-        <div class="skill-cat-title">Foundation</div>
+        <div class="skill-cat-title">Cloud Platforms</div>
         <div class="skill-items">
-          <span class="skill-item">Linux</span>
-          <span class="skill-item">Bash</span>
-          <span class="skill-item">Git</span>
-          <span class="skill-item">Networking</span>
+          <span class="skill-item">AWS</span>
+          <span class="skill-item">Azure</span>
+          <span class="skill-item">GCP</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">Infrastructure as Code</div>
+        <div class="skill-items">
+          <span class="skill-item">Terraform</span>
+          <span class="skill-item">Ansible</span>
+          <span class="skill-item">CloudFormation</span>
+          <span class="skill-item">Helm</span>
         </div>
       </div>
       <div class="skill-cat">
@@ -837,27 +907,38 @@
         <div class="skill-items">
           <span class="skill-item">Docker</span>
           <span class="skill-item">Kubernetes</span>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="skill-cat-title">Cloud Platform</div>
-        <div class="skill-items">
-          <span class="skill-item">AWS</span>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="skill-cat-title">Infrastructure as Code</div>
-        <div class="skill-items">
-          <span class="skill-item">Terraform</span>
+          <span class="skill-item">EKS</span>
+          <span class="skill-item">ArgoCD</span>
         </div>
       </div>
       <div class="skill-cat">
         <div class="skill-cat-title">CI/CD & Automation</div>
         <div class="skill-items">
-          <span class="skill-item">CI/CD</span>
+          <span class="skill-item">GitHub Actions</span>
+          <span class="skill-item">Jenkins</span>
+          <span class="skill-item">GitLab CI</span>
+          <span class="skill-item">Bash</span>
         </div>
       </div>
-    </div></div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">Observability</div>
+        <div class="skill-items">
+          <span class="skill-item">Prometheus</span>
+          <span class="skill-item">Grafana</span>
+          <span class="skill-item">ELK Stack</span>
+          <span class="skill-item">Datadog</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">Security</div>
+        <div class="skill-items">
+          <span class="skill-item">Vault</span>
+          <span class="skill-item">Trivy</span>
+          <span class="skill-item">Checkov</span>
+          <span class="skill-item">GuardDuty</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -869,8 +950,31 @@
     <div class="section-tag">Credentials</div>
     <h2>Certifications</h2>
     <div class="certs-grid">
-      <p style="color:var(--muted); font-family:'JetBrains Mono', monospace; font-size:0.8rem; letter-spacing:0.05em;">Certifications coming soon.</p>
-    </div></div>
+      <a href="#" class="cert-card">
+        <div class="cert-logo">☁</div>
+        <div>
+          <div class="cert-name">AWS Cloud Practitioner</div>
+          <div class="cert-issuer">Amazon Web Services</div>
+          <div class="cert-verify">Verify on Credly →</div>
+        </div>
+      </a>
+      <a href="#" class="cert-card">
+        <div class="cert-logo">🔐</div>
+        <div>
+          <div class="cert-name">Add your certification</div>
+          <div class="cert-issuer">Issuing Organisation</div>
+          <div class="cert-verify">Verify →</div>
+        </div>
+      </a>
+      <a href="#" class="cert-card">
+        <div class="cert-logo">🏗</div>
+        <div>
+          <div class="cert-name">Add your certification</div>
+          <div class="cert-issuer">Issuing Organisation</div>
+          <div class="cert-verify">Verify →</div>
+        </div>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -884,9 +988,9 @@
       <h2>Get In Touch</h2>
       <p class="contact-desc">Open to DevOps, Cloud Engineering, and Platform Engineering roles. UK-based and open to remote opportunities.</p>
       <div class="contact-links">
-        <a href="https://github.com/YacinD" target="_blank" class="btn-primary">GitHub →</a>
-        <a href="https://www.linkedin.com/in/yacindjama/" target="_blank" class="btn-ghost">LinkedIn</a>
-        <a href="/cdn-cgi/l/email-protection#277e46444e4909634d464a46674f48534a464e4b0944484a" class="btn-ghost">Email</a>
+        <a href="https://github.com/" target="_blank" class="btn-primary">GitHub →</a>
+        <a href="https://linkedin.com/in/" target="_blank" class="btn-ghost">LinkedIn</a>
+        <a href="mailto:Yacin.Djama@hotmail.com" class="btn-ghost">Email</a>
       </div>
     </div>
   </div>
@@ -896,7 +1000,7 @@
   <span>Yacin Djama</span> &nbsp;·&nbsp; DevOps Engineer &nbsp;·&nbsp; <span style="color:var(--tan-dark);">Open to opportunities</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -916,3 +1020,9 @@
   document.querySelectorAll('.project-card,.skill-cat,.cert-card,.stat-card').forEach(el => {
     el.style.opacity='0';
     el.style.transform='translateY(16px)';
+    el.style.transition='opacity 0.5s ease, transform 0.5s ease, border-color 0.2s, box-shadow 0.2s';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
