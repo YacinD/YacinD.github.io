@@ -38,24 +38,13 @@
     box-shadow: 0 10px 30px rgba(26,26,26,0.08);
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-  }
-
   .blob {
     position: fixed;
     z-index: 0;
     border-radius: 999px;
-    filter: blur(45px);
+    filter: blur(30px);
     opacity: 0.32;
     pointer-events: none;
-    transition: transform 0.2s linear;
-    will-change: transform;
   }
 
   .blob.a {
@@ -93,7 +82,7 @@
     justify-content: space-between;
     padding: 1rem 4rem;
     background: rgba(250,248,243,0.88);
-    backdrop-filter: blur(16px);
+    backdrop-filter: none;
     border-bottom: 1px solid var(--border);
   }
 
@@ -272,29 +261,35 @@
     background: rgba(255,255,255,0.74);
     border: 1px solid var(--border);
     border-radius: 0.6rem;
-    backdrop-filter: blur(6px);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
   }
 
   .stat-item .number,
   .stat-card .number {
     font-family: 'Syne', sans-serif;
-    font-size: 1.5rem;
+    font-size: clamp(0.95rem, 2.2vw, 1.5rem);
     font-weight: 800;
     color: var(--charcoal);
-    line-height: 1;
+    line-height: 1.15;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .stat-item .label,
   .stat-card .label {
-    font-size: 0.69rem;
+    font-size: clamp(0.6rem, 1.5vw, 0.69rem);
     color: var(--muted);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     font-weight: 500;
-    margin-top: 0.3rem;
+    margin-top: 0.38rem;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .hero-photo-wrap { position: relative; }
@@ -371,10 +366,9 @@
     z-index: 1;
     padding: 5.5rem 8vw;
     opacity: 0;
-    transform: translateY(44px) scale(0.985);
-    filter: blur(4px);
-    transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
-    will-change: opacity, transform, filter;
+    transform: translateY(30px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    will-change: opacity, transform;
   }
 
   .full-section::before {
@@ -391,8 +385,7 @@
   .full-section.cream-bg { background: linear-gradient(180deg, #f7f2ea, var(--cream)); }
   .full-section.in-view {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
+    transform: translateY(0);
   }
 
   .full-section.in-view::before { opacity: 1; }
@@ -791,8 +784,8 @@
 
   .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.55s ease, transform 0.55s ease;
+    transform: translateY(18px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
     transition-delay: var(--reveal-delay, 0ms);
     will-change: opacity, transform;
   }
@@ -812,7 +805,30 @@
     .timeline,
     .projects-highlights,
     .contact-mini { grid-template-columns: 1fr; }
-    .stats-row { grid-template-columns: 1fr 1fr; }
+    .stats-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+    }
+    .stat-item {
+      min-height: 78px;
+      padding: 0.75rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .stats-row { grid-template-columns: 1fr; }
+    .stat-item {
+      min-height: auto;
+      padding: 0.7rem 0.75rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
   }
 </style>
 </head>
@@ -1070,25 +1086,9 @@
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  let ticking = false;
-  const blobs = [
-    { el: document.querySelector('.blob.a'), speed: 0.09 },
-    { el: document.querySelector('.blob.b'), speed: -0.07 },
-    { el: document.querySelector('.blob.c'), speed: 0.05 }
-  ].filter(item => item.el);
-
   const onScroll = () => {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(() => {
-      const y = window.scrollY || 0;
-      document.body.classList.toggle('scrolling', y > 18);
-      blobs.forEach(({ el, speed }) => {
-        const offset = Math.round(y * speed);
-        el.style.transform = `translate3d(0, ${offset}px, 0)`;
-      });
-      ticking = false;
-    });
+    const y = window.scrollY || 0;
+    document.body.classList.toggle('scrolling', y > 18);
   };
 
   window.addEventListener('scroll', onScroll, { passive: true });
