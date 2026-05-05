@@ -813,7 +813,22 @@
     .nav-links { display: none; }
     #hero, .full-section { padding-left: 1.4rem; padding-right: 1.4rem; }
     .hero-inner { grid-template-columns: 1fr; }
-    .hero-photo-wrap { display: none; }
+    #hero { padding-top: 6rem; }
+    .hero-photo-wrap {
+      display: block;
+      max-width: 320px;
+      width: 100%;
+      margin: 0.8rem auto 0;
+    }
+    .hero-photo-frame { aspect-ratio: 4 / 5; }
+    .hero-photo-frame img { object-position: center 20%; }
+    .hero-photo-badge {
+      left: 0.4rem;
+      bottom: 0.4rem;
+      font-size: 0.62rem;
+      padding: 0.55rem 0.75rem;
+      box-shadow: 2px 2px 0 var(--charcoal);
+    }
     .about-grid { grid-template-columns: 1fr; gap: 1.2rem; }
     .timeline,
     .projects-highlights,
@@ -834,6 +849,11 @@
       min-height: auto;
       padding: 0.7rem 0.75rem;
     }
+    .hero-photo-wrap {
+      max-width: 270px;
+      margin-top: 0.65rem;
+    }
+    .hero-photo-frame { border-width: 2px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
