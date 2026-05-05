@@ -167,6 +167,12 @@
 
   h1 .accent { color: var(--tan-dark); display: block; }
 
+  h1 .j-fix {
+    font-family: inherit;
+    font-weight: 700;
+    font-feature-settings: "liga" 0, "calt" 0;
+  }
+
   .badge-open {
     display: inline-flex;
     align-items: center;
@@ -886,7 +892,7 @@
   <div class="hero-inner">
     <div>
       <div class="hero-tag">DevOps Engineer</div>
-      <h1>Yacin<br><span class="accent">Djama.</span></h1>
+      <h1>Yacin<br><span class="accent">D<span class="j-fix">j</span>ama.</span></h1>
       <div class="badge-open"><div class="dot"></div>Open to opportunities</div>
       <p class="hero-subtitle">
         Building scalable, secure infrastructure and automating deployment pipelines to streamline software delivery.
