@@ -280,6 +280,18 @@
     word-break: break-word;
   }
 
+  .stat-item .number {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.82rem, 1.85vw, 1rem);
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .stat-item .label,
   .stat-card .label {
     font-size: clamp(0.6rem, 1.5vw, 0.69rem);
@@ -617,6 +629,7 @@
     gap: 0.8rem;
   }
 
+
   .highlight-card {
     background: linear-gradient(165deg, #fff 0%, #f8f2e5 100%);
     border: 1px solid var(--border);
@@ -874,7 +887,7 @@
       <div class="hero-panel reveal">
         <div class="hero-panel-item"><span>Primary Focus</span><strong>AWS + AZURE</strong></div>
         <div class="hero-panel-item"><span>Current Direction</span><strong>Platform Engineering</strong></div>
-        <div class="hero-panel-item"><span>Preferred Stack</span><strong>Serverless + Kubernetes + GitOps</strong></div>
+        <div class="hero-panel-item"><span>Preferred Stack</span><strong>Kubernetes, AWS, Terraform</strong></div>
       </div>
     </div>
 
@@ -983,11 +996,11 @@
     <h2>Skills & Tools</h2>
     <div class="skills-grid">
       <div class="skill-cat reveal"><div class="skill-cat-title">Foundation</div><div class="skill-items"><span class="skill-item">Linux</span><span class="skill-item">Bash</span><span class="skill-item">Git</span><span class="skill-item">Networking</span></div></div>
-      <div class="skill-cat reveal"><div class="skill-cat-title">Containers & Orchestration</div><div class="skill-items"><span class="skill-item">Docker</span><span class="skill-item">Kubernetes</span></div></div>
-      <div class="skill-cat reveal"><div class="skill-cat-title">Cloud Platform</div><div class="skill-items"><span class="skill-item">AWS</span><span class="skill-item">IAM</span><span class="skill-item">VPC</span></div></div>
+      <div class="skill-cat reveal"><div class="skill-cat-title">Containers & Orchestration</div><div class="skill-items"><span class="skill-item">Docker</span><span class="skill-item">Kubernetes</span><span class="skill-item">Helm</span><span class="skill-item">Argo CD</span></div></div>
+      <div class="skill-cat reveal"><div class="skill-cat-title">Cloud Platform</div><div class="skill-items"><span class="skill-item">AWS</span><span class="skill-item">Azure</span><span class="skill-item">IAM</span><span class="skill-item">VPC</span></div></div>
       <div class="skill-cat reveal"><div class="skill-cat-title">Infrastructure as Code</div><div class="skill-items"><span class="skill-item">Terraform</span><span class="skill-item">Workspaces</span></div></div>
       <div class="skill-cat reveal"><div class="skill-cat-title">CI/CD & Automation</div><div class="skill-items"><span class="skill-item">GitHub Actions</span><span class="skill-item">CI/CD</span></div></div>
-      <div class="skill-cat reveal"><div class="skill-cat-title">Observability</div><div class="skill-items"><span class="skill-item">CloudWatch</span><span class="skill-item">Health Checks</span><span class="skill-item">Logs</span></div></div>
+      <div class="skill-cat reveal"><div class="skill-cat-title">Observability</div><div class="skill-items"><span class="skill-item">CloudWatch</span><span class="skill-item">Grafana</span><span class="skill-item">Prometheus</span><span class="skill-item">Health Checks</span><span class="skill-item">Logs</span></div></div>
     </div>
   </div>
 </div>
@@ -1093,6 +1106,7 @@
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
 </script>
 </body>
 </html>
