@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terraform Blocks | Yacin Djama</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-blog">
+
+<div class="blob a"></div>
+<div class="blob b"></div>
+<div class="blob c"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">Yacin<span>.Devops</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="index.html#certs">Certs</a></li>
+    <li><a href="blog.html" class="is-active">Blog</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="page">
+  <div class="section-inner">
+    <div class="section-tag">Notes</div>
+    <h2>Blog</h2>
+    <p class="section-intro">Short field notes on infrastructure as code — the patterns I keep coming back to when a deploy has to be boring.</p>
+
+    <article class="post-shell">
+      <div class="blog-kicker">
+        <span>1 min read</span>
+        <span class="dot-sep" aria-hidden="true"></span>
+        <span>7 Sep 2026</span>
+        <span class="dot-sep" aria-hidden="true"></span>
+        <span>Terraform</span>
+      </div>
+
+      <h1 class="post-title">Terraform blocks, without the noise</h1>
+      <p class="post-lede">A Terraform file is not a script. It is a stack of <strong>blocks</strong> — labelled containers that declare intent. Once you see that, HCL stops looking like syntax and starts looking like a filing system.</p>
+
+      <div class="post-body">
+        <p>Every block has a type, optional labels, and a body. The type tells Terraform what kind of object you mean. The labels name it. The body is the contract: arguments in, attributes out. That pattern repeats from the first <code>provider</code> to the last <code>output</code>.</p>
+
+        <div class="code-panel">
+          <div class="code-panel-bar">
+            <span>main.tf</span>
+            <span>block anatomy</span>
+          </div>
+          <pre><span class="cmt"># type        labels              body</span>
+<span class="kw">resource</span> <span class="str">"aws_s3_bucket"</span> <span class="str">"logs"</span> {
+  bucket = <span class="str">"app-logs-${var.env}"</span>
+  tags   = { managed_by = <span class="str">"terraform"</span> }
+}</pre>
+        </div>
+
+        <p>Start with four blocks and you can ship real infrastructure. Everything else is a refinement of the same idea.</p>
+      </div>
+
+      <div class="block-grid">
+        <div class="block-card">
+          <div class="k">terraform / provider</div>
+          <div class="v">Who you talk to, which versions you pin, and where state lives. This is the frame, not the picture.</div>
+        </div>
+        <div class="block-card">
+          <div class="k">resource</div>
+          <div class="v">The thing Terraform will create and keep. Address it later as <code>aws_s3_bucket.logs</code>.</div>
+        </div>
+        <div class="block-card">
+          <div class="k">variable / output</div>
+          <div class="v">The public contract. Inputs you can change without rewriting the module. Outputs other stacks can consume.</div>
+        </div>
+      </div>
+
+      <div class="post-body">
+        <p><strong>Data</strong> blocks are lookups, not creates — they read an existing VPC, AMI, or secret so your config stays honest. <strong>Module</strong> blocks are folders you trust: same block shape, just pointing at someone else’s resources. Locals are the sticky notes you do not want to repeat.</p>
+        <p>If a plan looks chaotic, it is usually because blocks are mixed: a resource doing a data source’s job, a variable that should have been a local, a module hiding a one-off. Keep each block doing one job and Terraform stays readable under pressure.</p>
+      </div>
+
+      <p class="post-close">Treat blocks as a filing system, not a language quiz. <strong>Name clearly, pin versions, and let Terraform own the lifecycle.</strong> The rest is just repeating that pattern until the pipeline is boring — which is the point.</p>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <span>Yacin Djama</span> · DevOps Engineer · <span class="footer-accent">Open to opportunities</span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const onScroll = () => {
+    const y = window.scrollY || 0;
+    document.body.classList.toggle('scrolling', y > 18);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+</body>
+</html>
