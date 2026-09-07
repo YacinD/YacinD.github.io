@@ -796,6 +796,24 @@
     letter-spacing: 0.05em;
   }
 
+  .cert-card-soon {
+    cursor: default;
+  }
+
+  .cert-card-soon:hover {
+    border-color: var(--border);
+    transform: none;
+    box-shadow: none;
+  }
+
+  .cert-name.coming-soon {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 0;
+  }
+
   .contact-inner {
     text-align: center;
     max-width: 760px;
@@ -1008,7 +1026,6 @@
           <span>How I work</span>
           <div class="hero-chips">
             <span>AWS</span>
-            <span>Azure</span>
             <span>Kubernetes</span>
             <span>Terraform</span>
             <span>CI/CD</span>
@@ -1044,8 +1061,8 @@
       <div class="about-stats reveal">
         <div class="stat-card"><div class="number coming-soon">Coming soon</div><div class="label">Projects</div></div>
         <div class="stat-card"><div class="number experience-duration" data-case="title">10 Months</div><div class="label">Experience</div></div>
-        <div class="stat-card"><div class="number">Docker</div><div class="label">Core Specialty</div></div>
-        <div class="stat-card"><div class="number">K8s</div><div class="label">Orchestration</div></div>
+        <div class="stat-card"><div class="number">Docker</div><div class="label"></div></div>
+        <div class="stat-card"><div class="number">K8s</div><div class="label"></div></div>
       </div>
     </div>
 
@@ -1113,10 +1130,10 @@
     <div class="skills-grid">
       <div class="skill-cat reveal"><div class="skill-cat-title">Foundation</div><div class="skill-items"><span class="skill-item">Linux</span><span class="skill-item">Bash</span><span class="skill-item">Git</span><span class="skill-item">Networking</span></div></div>
       <div class="skill-cat reveal"><div class="skill-cat-title">Containers & Orchestration</div><div class="skill-items"><span class="skill-item">Docker</span><span class="skill-item">Kubernetes</span><span class="skill-item">Helm</span><span class="skill-item">Argo CD</span></div></div>
-      <div class="skill-cat reveal"><div class="skill-cat-title">Cloud Platform</div><div class="skill-items"><span class="skill-item">AWS</span><span class="skill-item">Azure</span><span class="skill-item">IAM</span><span class="skill-item">VPC</span></div></div>
-      <div class="skill-cat reveal"><div class="skill-cat-title">Infrastructure as Code</div><div class="skill-items"><span class="skill-item">Terraform</span><span class="skill-item">Workspaces</span></div></div>
+      <div class="skill-cat reveal"><div class="skill-cat-title">Cloud Platform</div><div class="skill-items"><span class="skill-item">AWS</span><span class="skill-item">Azure</span></div></div>
+      <div class="skill-cat reveal"><div class="skill-cat-title">Infrastructure as Code</div><div class="skill-items"><span class="skill-item">Terraform</span></div></div>
       <div class="skill-cat reveal"><div class="skill-cat-title">CI/CD & Automation</div><div class="skill-items"><span class="skill-item">GitHub Actions</span><span class="skill-item">CI/CD</span></div></div>
-      <div class="skill-cat reveal"><div class="skill-cat-title">Observability</div><div class="skill-items"><span class="skill-item">CloudWatch</span><span class="skill-item">Grafana</span><span class="skill-item">Prometheus</span><span class="skill-item">Health Checks</span><span class="skill-item">Logs</span></div></div>
+      <div class="skill-cat reveal"><div class="skill-cat-title">Observability</div><div class="skill-items"><span class="skill-item">CloudWatch</span><span class="skill-item">Grafana</span><span class="skill-item">Prometheus</span><span class="skill-item">Railway</span><span class="skill-item">Health Checks</span><span class="skill-item">Logs</span></div></div>
     </div>
   </div>
 </div>
@@ -1128,30 +1145,11 @@
     <div class="section-tag">Credentials</div>
     <h2>Certifications</h2>
     <div class="certs-grid">
-      <a class="cert-card reveal" href="#">
-        <div class="cert-logo">☁️</div>
+      <div class="cert-card reveal cert-card-soon">
         <div>
-          <div class="cert-name">AWS Cloud Path</div>
-          <div class="cert-issuer">In Progress</div>
-          <div class="cert-verify">Learning roadmap active</div>
+          <div class="cert-name coming-soon">Coming soon</div>
         </div>
-      </a>
-      <a class="cert-card reveal" href="#">
-        <div class="cert-logo">🔐</div>
-        <div>
-          <div class="cert-name">DevSecOps Foundations</div>
-          <div class="cert-issuer">Self-Directed Study</div>
-          <div class="cert-verify">Security-first deployment patterns</div>
-        </div>
-      </a>
-      <a class="cert-card reveal" href="#">
-        <div class="cert-logo">📦</div>
-        <div>
-          <div class="cert-name">Kubernetes Practice Track</div>
-          <div class="cert-issuer">Hands-on Lab Projects</div>
-          <div class="cert-verify">Production-oriented workflows</div>
-        </div>
-      </a>
+      </div>
     </div>
   </div>
 </div>
