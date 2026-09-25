@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" class="page-analytics">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Analytics | Yacin Djama</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="site.js"></script>
+<script>
+  YD.bootstrapOwner();
+  if (!YD.readOwner()) location.replace('index.html');
+</script>
+</head>
+<body>
+
+<div class="blob a"></div>
+<div class="blob b"></div>
+<div class="blob c"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">Yacin<span>.Devops</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="page" class="analytics-page">
+  <div class="section-inner">
+    <div class="section-tag">Private</div>
+    <h2>Site analytics</h2>
+    <p class="section-intro">Owner-only view of unique visitors and time on page. Totals update as people land on the site and the blog.</p>
+
+    <article class="analytics-panel" data-kind="home">
+      <div class="analytics-head">
+        <div>
+          <div class="skill-cat-title">Page analytics</div>
+          <h3 class="analytics-title">Main site</h3>
+        </div>
+        <div class="analytics-kpis">
+          <div class="stat-card">
+            <div class="number" data-kpi="total">—</div>
+            <div class="label">Unique visitors</div>
+          </div>
+          <div class="stat-card">
+            <div class="number" data-kpi="avg">—</div>
+            <div class="label">Avg time per visitor</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <svg class="visit-chart" viewBox="0 0 720 260" role="img" aria-label="Daily unique visitors to the main site"></svg>
+      </div>
+    </article>
+
+    <article class="analytics-panel" data-kind="blog">
+      <div class="analytics-head">
+        <div>
+          <div class="skill-cat-title">Blog viewers</div>
+          <h3 class="analytics-title">Notes</h3>
+        </div>
+        <div class="analytics-kpis">
+          <div class="stat-card">
+            <div class="number" data-kpi="total">—</div>
+            <div class="label">Unique visitors</div>
+          </div>
+          <div class="stat-card">
+            <div class="number" data-kpi="avg">—</div>
+            <div class="label">Avg time per visitor</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <svg class="visit-chart" viewBox="0 0 720 260" role="img" aria-label="Daily unique visitors to the blog"></svg>
+      </div>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <span>Yacin Djama</span> · DevOps Engineer · <span class="footer-accent">Private dashboard</span>
+  </div>
+</footer>
+
+<script>
+  if (!YD.readOwner()) {
+    document.body.replaceChildren();
+  } else {
+    const DAYS = 14;
+    const tickSeconds = YD.TICK_MS / 1000;
+
+    const dayList = () => {
+      const days = [];
+      const now = new Date();
+      for (let i = DAYS - 1; i >= 0; i--) {
+        const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() - i);
+        days.push({
+          stamp: YD.dayStamp(d),
+          label: d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
+        });
+      }
+      return days;
+    };
+
+    const formatDuration = seconds => {
+      if (!seconds || seconds < 1) return '0s';
+      const m = Math.floor(seconds / 60);
+      const s = Math.round(seconds % 60);
+      if (m === 0) return `${s}s`;
+      if (s === 0) return `${m}m`;
+      return `${m}m ${s}s`;
+    };
+
+    const drawChart = (svg, points) => {
+      const W = 720, H = 260;
+      const pad = { l: 36, r: 16, t: 24, b: 42 };
+      const innerW = W - pad.l - pad.r;
+      const innerH = H - pad.t - pad.b;
+      const max = Math.max(1, ...points.map(p => p.value));
+      const x = i => pad.l + (points.length === 1 ? innerW / 2 : (i / (points.length - 1)) * innerW);
+      const y = v => pad.t + innerH - (v / max) * innerH;
+
+      const line = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${x(i).toFixed(1)} ${y(p.value).toFixed(1)}`).join(' ');
+      const area = `${line} L${x(points.length - 1).toFixed(1)} ${y(0).toFixed(1)} L${x(0).toFixed(1)} ${y(0).toFixed(1)} Z`;
+      const ticks = [];
+      const step = max <= 4 ? 1 : Math.ceil(max / 4);
+      for (let v = 0; v <= max; v += step) ticks.push(v);
+      if (ticks[ticks.length - 1] !== max) ticks.push(max);
+
+      const grid = ticks.map(v => {
+        const gy = y(v).toFixed(1);
+        return `<line class="chart-grid" x1="${pad.l}" x2="${W - pad.r}" y1="${gy}" y2="${gy}" /><text class="chart-y" x="${pad.l - 8}" y="${gy}" dy="0.32em">${v}</text>`;
+      }).join('');
+
+      const labels = points.map((p, i) => {
+        const show = points.length < 10 || i % 2 === 0 || i === points.length - 1;
+        if (!show) return '';
+        return `<text class="chart-x" x="${x(i).toFixed(1)}" y="${H - 14}">${p.label}</text>`;
+      }).join('');
+
+      const dots = points.map((p, i) => `<circle class="chart-dot" cx="${x(i).toFixed(1)}" cy="${y(p.value).toFixed(1)}" r="4"><title>${p.label}: ${p.value}</title></circle>`).join('');
+
+      svg.innerHTML = `
+        ${grid}
+        <path class="chart-area" d="${area}" />
+        <path class="chart-line" d="${line}" />
+        ${dots}
+        ${labels}
+      `;
+    };
+
+    const loadPanel = async (kind) => {
+      const panel = document.querySelector(`[data-kind="${kind}"]`);
+      const days = dayList();
+      const prefix = kind === 'blog' ? 'b' : 'h';
+      const tickPrefix = kind === 'blog' ? 'bt' : 'ht';
+      const lifeKey = kind === 'blog' ? 'blog-visits' : 'visits';
+
+      const [life, daily, ticks] = await Promise.all([
+        YD.abacus('get', lifeKey).catch(() => 0),
+        Promise.all(days.map(d => YD.abacus('get', `${prefix}-${d.stamp}`).catch(() => 0))),
+        Promise.all(days.map(d => YD.abacus('get', `${tickPrefix}-${d.stamp}`).catch(() => 0)))
+      ]);
+
+      const visitSum = daily.reduce((a, b) => a + b, 0);
+      const tickSum = ticks.reduce((a, b) => a + b, 0);
+      const avg = visitSum > 0 ? (tickSum * tickSeconds) / visitSum : 0;
+
+      panel.querySelector('[data-kpi="total"]').textContent = Number(life || visitSum).toLocaleString('en-GB');
+      panel.querySelector('[data-kpi="avg"]').textContent = formatDuration(avg);
+      drawChart(panel.querySelector('.visit-chart'), days.map((d, i) => ({
+        label: d.label,
+        value: daily[i] || 0
+      })));
+    };
+
+    Promise.all([loadPanel('home'), loadPanel('blog')]).catch(() => {});
+  }
+</script>
+</body>
+</html>

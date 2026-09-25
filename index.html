@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yacin Djama | DevOpss Engineer</title>
+<title>Yacin Djama | DevOps Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script src="site.js"></script>
 </head>
 <body>
   
@@ -20,7 +21,6 @@
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#certs">Certs</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -28,7 +28,7 @@
 
 <section id="hero">
   <div class="hero-inner">
-    <div>
+    <div class="hero-copy">
       <div class="hero-tag">DevOps Engineer</div>
       <h1>Yacin<br><span class="accent">Djama</span></h1>
       <div class="badge-open"><div class="dot"></div>Open to opportunities</div>
@@ -41,7 +41,24 @@
         <a href="https://github.com/YacinD" target="_blank" class="btn-ghost">GitHub</a>
         <a href="#contact" class="btn-ghost">Get in touch</a>
       </div>
+    </div>
 
+    <div class="hero-photo-wrap reveal">
+      <div class="hero-photo-frame">
+        <img src="https://github.com/YacinD.png" alt="Yacin portrait">
+      </div>
+      <a class="hero-blog-cue" href="blog.html" aria-label="Go to the blog">
+        <svg viewBox="0 0 92 72" aria-hidden="true">
+          <path d="M8 58 C 18 18, 58 8, 78 28" />
+          <path d="M64 18 L78 28 L66 38" />
+        </svg>
+        <span class="cue-label">Click me</span>
+        <span class="cue-sub">Read the blog</span>
+      </a>
+      <div class="hero-photo-badge">DevOps Engineer</div>
+    </div>
+
+    <div class="hero-rest">
       <div class="stats-row">
         <div class="stat-item"><div class="number">GMT/BST</div><div class="label">Timezone</div></div>
         <div class="stat-item"><div class="number experience-duration" data-case="lower">11 months</div><div class="label">Experience</div></div>
@@ -60,13 +77,6 @@
         </div>
         <p class="hero-hook">Pipelines that ship clean — <strong>infrastructure as code, zero-drama deploys, and systems that stay up.</strong></p>
       </div>
-    </div>
-
-    <div class="hero-photo-wrap reveal">
-      <div class="hero-photo-frame">
-        <img src="https://github.com/YacinD.png" alt="Yacin portrait">
-      </div>
-      <div class="hero-photo-badge">DevOps Engineer</div>
     </div>
   </div>
 </section>
@@ -157,26 +167,10 @@
     <div class="skills-grid">
       <div class="skill-cat reveal"><div class="skill-cat-title">Foundation</div><div class="skill-items"><span class="skill-item">Linux</span><span class="skill-item">Bash</span><span class="skill-item">Git</span><span class="skill-item">Networking</span></div></div>
       <div class="skill-cat reveal"><div class="skill-cat-title">Containers & Orchestration</div><div class="skill-items"><span class="skill-item">Docker</span><span class="skill-item">Kubernetes</span><span class="skill-item">Helm</span><span class="skill-item">Argo CD</span></div></div>
-      <div class="skill-cat reveal"><div class="skill-cat-title">Cloud Platform</div><div class="skill-items"><span class="skill-item">AWS</span><span class="skill-item">Azure</span></div></div>
+      <div class="skill-cat reveal"><div class="skill-cat-title">Cloud Platform</div><div class="skill-items"><span class="skill-item">Azure</span></div></div>
       <div class="skill-cat reveal"><div class="skill-cat-title">Infrastructure as Code</div><div class="skill-items"><span class="skill-item">Terraform</span></div></div>
       <div class="skill-cat reveal"><div class="skill-cat-title">CI/CD & Automation</div><div class="skill-items"><span class="skill-item">GitHub Actions</span><span class="skill-item">CI/CD</span></div></div>
       <div class="skill-cat reveal"><div class="skill-cat-title">Observability</div><div class="skill-items"><span class="skill-item">CloudWatch</span><span class="skill-item">Grafana</span><span class="skill-item">Prometheus</span><span class="skill-item">Railway</span><span class="skill-item">Health Checks</span><span class="skill-item">Logs</span></div></div>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<div class="full-section" id="certs">
-  <div class="section-inner">
-    <div class="section-tag">Credentials</div>
-    <h2>Certifications</h2>
-    <div class="certs-grid">
-      <div class="cert-card reveal cert-card-soon">
-        <div>
-          <div class="cert-name coming-soon">Coming soon</div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -207,9 +201,6 @@
   <div>
     <span>Yacin Djama</span> · DevOps Engineer · <span class="footer-accent">Open to opportunities</span>
   </div>
-  <p class="visit-counter" id="visit-counter" aria-live="polite">
-    <span>visitors <span class="visit-num" id="visit-count"></span></span>
-  </p>
 </footer>
 
 <script>
@@ -223,7 +214,7 @@
 
   document.querySelectorAll('.full-section').forEach(section => sectionObserver.observe(section));
 
-  document.querySelectorAll('.projects-grid .project-card, .skills-grid .skill-cat, .certs-grid .cert-card, .about-stats .stat-card, .timeline .timeline-item, .projects-highlights .highlight-card').forEach((el, idx) => {
+  document.querySelectorAll('.projects-grid .project-card, .skills-grid .skill-cat, .about-stats .stat-card, .timeline .timeline-item, .projects-highlights .highlight-card').forEach((el, idx) => {
     el.classList.add('reveal');
     el.style.setProperty('--reveal-delay', `${(idx % 6) * 70}ms`);
   });
@@ -291,65 +282,11 @@
   }
 
   updateExperienceDuration();
-  // Re-check daily in case the page stays open across a month boundary
   setInterval(updateExperienceDuration, 60 * 60 * 1000);
 
-  (function trackUniqueVisits() {
-    const counterEl = document.getElementById('visit-count');
-    const wrapEl = document.getElementById('visit-counter');
-    if (!counterEl || !wrapEl) return;
-
-    const namespace = 'yacind.github.io';
-    const key = 'visits';
-    const ownerFlag = 'yd-site-owner';
-    const countedFlag = 'yd-unique-visit';
-    const ownerCookie = 'yd_owner=1';
-    const params = new URLSearchParams(location.search);
-    const host = location.hostname;
-    const isLocal = host === 'localhost' || host === '127.0.0.1' || location.protocol === 'file:';
-    const markedInUrl = params.has('me') || location.hash === '#me';
-
-    const readOwner = () => {
-      try {
-        if (localStorage.getItem(ownerFlag) === '1') return true;
-      } catch (err) {}
-      return document.cookie.split(';').some(part => part.trim() === ownerCookie);
-    };
-
-    const markOwnerDevice = () => {
-      try { localStorage.setItem(ownerFlag, '1'); } catch (err) {}
-      document.cookie = `${ownerCookie}; Max-Age=315360000; Path=/; SameSite=Lax`;
-    };
-
-    if (isLocal || markedInUrl || readOwner()) {
-      markOwnerDevice();
-    }
-
-    if (markedInUrl) {
-      const hash = location.hash === '#me' ? '' : location.hash;
-      history.replaceState({}, '', location.pathname + hash);
-    }
-
-    let alreadyCounted = false;
-    try { alreadyCounted = localStorage.getItem(countedFlag) === '1'; } catch (err) {}
-
-    const isOwnerDevice = readOwner();
-    const shouldCount = !isOwnerDevice && !alreadyCounted;
-    const endpoint = shouldCount ? 'hit' : 'get';
-
-    fetch(`https://abacus.jasoncameron.dev/${endpoint}/${namespace}/${key}`)
-      .then(res => (res.ok ? res.json() : Promise.reject()))
-      .then(data => {
-        const value = Number(data && data.value);
-        if (!Number.isFinite(value)) return;
-        if (shouldCount) {
-          try { localStorage.setItem(countedFlag, '1'); } catch (err) {}
-        }
-        counterEl.textContent = value.toLocaleString('en-GB');
-        wrapEl.classList.add('is-on');
-      })
-      .catch(() => {});
-  })();
+  YD.bootstrapOwner();
+  YD.mountAnalyticsButton();
+  YD.trackPage('home');
 
 </script>
 </body>
